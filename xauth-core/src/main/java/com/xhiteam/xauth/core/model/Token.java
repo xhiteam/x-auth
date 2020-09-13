@@ -49,7 +49,9 @@ public interface Token {
      *
      * @return
      */
-    Map<String, String> extensions();
+    Map<String, String> getExtensions();
+
+    Token setExtensions(Map<String, String> extensions);
 
     /**
      * 添加扩展数据
