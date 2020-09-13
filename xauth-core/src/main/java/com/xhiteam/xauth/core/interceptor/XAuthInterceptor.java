@@ -4,7 +4,6 @@ import com.xhiteam.xauth.core.exception.UnauthorizedException;
 import com.xhiteam.xauth.core.model.Token;
 import com.xhiteam.xauth.core.repository.TokenRepository;
 import com.xhiteam.xauth.core.service.XAuthCheckService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -22,11 +21,15 @@ import java.lang.reflect.Method;
  * 拦截器，用于 X-Auth 权限校验
  **/
 @Order(1)
-@RequiredArgsConstructor
 public class XAuthInterceptor extends HandlerInterceptorAdapter {
 
     final TokenRepository repository;
     final XAuthCheckService service;
+
+    public XAuthInterceptor(TokenRepository repository, XAuthCheckService service) {
+        this.repository = repository;
+        this.service = service;
+    }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
