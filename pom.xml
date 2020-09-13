@@ -44,6 +44,14 @@
         <url>https://xhiteam.com</url>
     </organization>
 
+    <developers>
+        <developer>
+            <name>Lambo Chen</name>
+            <email>lambo.chen.2306@gmail.com</email>
+            <url>https://github.com/lambochen</url>
+        </developer>
+    </developers>
+
     <distributionManagement>
         <repository>
             <id>releases</id>
