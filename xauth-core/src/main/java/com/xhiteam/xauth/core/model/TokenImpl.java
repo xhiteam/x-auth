@@ -1,6 +1,8 @@
 package com.xhiteam.xauth.core.model;
 
 import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -16,6 +18,8 @@ public class TokenImpl implements Token {
     private Calendar expire;
     private int ttl;
     private String id;
+    private List<String> roles;
+    private List<String> permissions;
     private Map<String, String> extensions;
 
     public TokenImpl() {
@@ -24,6 +28,8 @@ public class TokenImpl implements Token {
         this.expire = Calendar.getInstance();
         this.expire.add(Calendar.SECOND, this.ttl);
 
+        this.roles = new LinkedList<>();
+        this.permissions = new LinkedList<>();
         this.extensions = new ConcurrentHashMap<>();
     }
 
@@ -69,6 +75,28 @@ public class TokenImpl implements Token {
     @Override
     public String getId() {
         return id;
+    }
+
+    @Override
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    @Override
+    public Token setRoles(List<String> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    @Override
+    public List<String> getPermissions() {
+        return permissions;
+    }
+
+    @Override
+    public Token setPermissions(List<String> permissions) {
+        this.permissions = permissions;
+        return this;
     }
 
     @Override

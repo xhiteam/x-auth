@@ -1,6 +1,7 @@
 package com.xhiteam.xauth.core.model;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,6 +44,24 @@ public interface Token {
     Token setId(String id);
 
     String getId();
+
+    /**
+     * 角色列表
+     *
+     * @return
+     */
+    List<String> getRoles();
+
+    Token setRoles(List<String> roles);
+
+    /**
+     * 权限列表
+     *
+     * @return
+     */
+    List<String> getPermissions();
+
+    Token setPermissions(List<String> permissions);
 
     /**
      * 获取扩展数据 Map
