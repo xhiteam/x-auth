@@ -1,5 +1,6 @@
 package com.xhiteam.xauth.core.interceptor;
 
+import com.xhiteam.xauth.core.constant.TokenConstant;
 import com.xhiteam.xauth.core.exception.UnauthorizedException;
 import com.xhiteam.xauth.core.model.Token;
 import com.xhiteam.xauth.core.repository.TokenRepository;
@@ -51,12 +52,15 @@ public class XAuthInterceptor extends HandlerInterceptorAdapter {
             method = ((HandlerMethod) handler).getMethod();
         }
 
-        // check
-        if (!service.check(method)) {
+        //将Token字符串解析为Token对象
+        Token token = getToken(request);
+
+        // 判断是否忽略权限注解或用户是否具有相应权限
+        if (!service.check(method,token)) {
             throw new UnauthorizedException();
         }
 
-        // refresh
+        // 刷新token并回传
         refreshToken(request, response);
 
         return super.preHandle(request, response, handler);
@@ -66,7 +70,7 @@ public class XAuthInterceptor extends HandlerInterceptorAdapter {
         Token token = getToken(request);
         Token refreshToken = repository.refreshToken(token);
         if (refreshToken != null) {
-            response.setHeader(HttpHeaders.AUTHORIZATION, refreshToken.getTokenStr());
+            response.setHeader(TokenConstant.TOKEN, refreshToken.getTokenStr());
         }
     }
 
