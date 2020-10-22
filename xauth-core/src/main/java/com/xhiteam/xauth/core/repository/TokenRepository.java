@@ -3,6 +3,7 @@ package com.xhiteam.xauth.core.repository;
 import com.xhiteam.xauth.core.model.Token;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,6 +22,11 @@ public interface TokenRepository {
      */
     Token parseToken(String tokenStr);
 
+    /**
+     * 构建新的Token
+     *
+     * @return 新的Token
+     */
     Token newToken();
 
     Token newToken(String id);
@@ -28,6 +34,11 @@ public interface TokenRepository {
     Token newToken(String id, Calendar expire);
 
     Token newToken(String id, Calendar expire, Map<String, String> extensions);
+
+    Token newToken(String id, List<String> roles, List<String> permissions, Map<String,String> extensions);
+
+    Token newToken(String id, List<String> roles, List<String> permissions, Calendar expire, Map<String, String> extensions);
+
 
     /**
      * 拷贝构造

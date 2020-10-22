@@ -1,5 +1,7 @@
 package com.xhiteam.xauth.core.service;
 
+import com.xhiteam.xauth.core.model.Token;
+
 import java.lang.reflect.Method;
 
 /**
@@ -11,11 +13,11 @@ import java.lang.reflect.Method;
 public interface XAuthCheckService {
 
     /**
-     * 校验所有 {@link #checkIgnore(Method)}、{@link #checkPermission(Method)}、{@link #checkRole(Method)}
+     * 校验所有 {@link #checkIgnore(Method)}、{@link #checkPermission(Method, Token)}、{@link #checkRole(Method, Token)}
      *
      * @return
      */
-    boolean check(Method method);
+    boolean check(Method method, Token token);
 
     /**
      * 校验是否为 {@link com.xhiteam.xauth.core.annotation.Ignore} 注释方法
@@ -31,7 +33,7 @@ public interface XAuthCheckService {
      * @param method
      * @return
      */
-    boolean checkPermission(Method method);
+    boolean checkPermission(Method method, Token token);
 
     /**
      * 校验是否为允许通行的角色
@@ -39,5 +41,5 @@ public interface XAuthCheckService {
      * @param method
      * @return
      */
-    boolean checkRole(Method method);
+    boolean checkRole(Method method, Token token);
 }
