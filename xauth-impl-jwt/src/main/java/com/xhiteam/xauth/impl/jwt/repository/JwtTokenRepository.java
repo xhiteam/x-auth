@@ -3,9 +3,9 @@ package com.xhiteam.xauth.impl.jwt.repository;
 import com.xhiteam.xauth.core.model.Token;
 import com.xhiteam.xauth.core.repository.AbstractTokenRepository;
 import com.xhiteam.xauth.impl.jwt.util.JwtTokenUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.util.StringUtils;
 
 import java.util.Calendar;
 import java.util.List;
@@ -22,7 +22,7 @@ public class JwtTokenRepository extends AbstractTokenRepository {
 
 	@Override
 	public Token parseToken(String tokenStr) {
-		if (StringUtils.isNotBlank(tokenStr)) {
+		if (!StringUtils.isEmpty(tokenStr)) {
 			Token token = JwtTokenUtils.parseToken(tokenStr);
 			token.setTokenStr(tokenStr);
 			return token;
@@ -43,10 +43,10 @@ public class JwtTokenRepository extends AbstractTokenRepository {
 	@Override
 	public Token refreshToken(Token token) {
 		if (token == null || token.getExpire() == null) {
-			log.error("LocalTokenRepository#newToken: illegal param. token={}", token);
+			log.error("JwtTokenRepository#refreshToken: illegal param. token={}", token);
 			return null;
 		} else if (token.getExpire().getTimeInMillis() < System.currentTimeMillis()) {
-			log.error("LocalTokenRepository#newToken: token has expired. token={}", token);
+			log.error("JwtTokenRepository#refreshToken: token has expired. token={}", token);
 			return null;
 		}
 		return this.newToken(token);

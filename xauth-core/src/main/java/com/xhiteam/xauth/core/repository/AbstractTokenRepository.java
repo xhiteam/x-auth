@@ -1,7 +1,6 @@
 package com.xhiteam.xauth.core.repository;
 
 import com.xhiteam.xauth.core.model.Token;
-import com.xhiteam.xauth.core.model.TokenImpl;
 
 import java.util.Calendar;
 import java.util.Date;

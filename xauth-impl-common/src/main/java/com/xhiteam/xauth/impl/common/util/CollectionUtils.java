@@ -8,7 +8,7 @@ import java.util.Objects;
  * @description 集合工具类
  * @date 2020/09/27 22:28
  */
-public class CollectionUtils {
+public final class CollectionUtils {
 
 	/**
 	 * 集合判空

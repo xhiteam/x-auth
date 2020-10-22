@@ -1,6 +1,5 @@
 package com.xhiteam.xauth.core.interceptor;
 
-import com.xhiteam.xauth.core.constant.TokenConstant;
 import com.xhiteam.xauth.core.exception.UnauthorizedException;
 import com.xhiteam.xauth.core.model.Token;
 import com.xhiteam.xauth.core.repository.TokenRepository;
@@ -70,7 +69,7 @@ public class XAuthInterceptor extends HandlerInterceptorAdapter {
         Token token = getToken(request);
         Token refreshToken = repository.refreshToken(token);
         if (refreshToken != null) {
-            response.setHeader(TokenConstant.TOKEN, refreshToken.getTokenStr());
+            response.setHeader(HttpHeaders.AUTHORIZATION, refreshToken.getTokenStr());
         }
     }
 

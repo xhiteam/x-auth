@@ -4,12 +4,17 @@ import com.xhiteam.xauth.core.constant.TokenConstant;
 import com.xhiteam.xauth.core.model.Token;
 import com.xhiteam.xauth.core.model.TokenImpl;
 import com.xhiteam.xauth.impl.common.util.JsonUtils;
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.util.StringUtils;
 
 import java.security.Key;
 import java.util.*;
@@ -19,7 +24,7 @@ import java.util.*;
  * @description token工具类
  * @date 2020/09/26 14:24
  */
-public class JwtTokenUtils {
+public final class JwtTokenUtils {
 	private static Logger log = LogManager.getLogger(JwtTokenUtils.class);
 
 	/**
@@ -140,7 +145,7 @@ public class JwtTokenUtils {
 	public static Token buildToken(String subject, List<String> roles, List<String> permissions,
 								   Calendar expire, int ttl, Map<String, String> extensions, Key key) {
 		//判断参数合法性
-		if (StringUtils.isBlank(subject)
+		if (StringUtils.isEmpty(subject)
 				|| expire == null
 				|| expire.getTimeInMillis() <= System.currentTimeMillis()
 				|| key == null) {
@@ -186,7 +191,7 @@ public class JwtTokenUtils {
 			try {
 				tokenBean = JsonUtils.getInstance().convertValue(claims.get(TokenConstant.TOKEN), TokenImpl.class);
 			} catch (Exception e) {
-				log.error("TokenUtil.parseToken: token={}", token);
+				log.error("JwtTokenUtils#parseToken: token={}", token);
 			}
 		}
 		return tokenBean;
@@ -199,23 +204,23 @@ public class JwtTokenUtils {
 	 * @return 载荷对象
 	 */
 	private static Claims parse(String token) {
-		if (StringUtils.isBlank(token)) {
+		if (StringUtils.isEmpty(token)) {
 			return null;
 		}
 		try {
 			return Jwts.parser().setSigningKey(generateKey()).parseClaimsJws(token).getBody();
 		} catch (ExpiredJwtException e) {
-			log.error("Token has expired. token={}", token);
+			log.error("JwtTokenUtils#parse: Token has expired. token={}", token);
 		} catch (UnsupportedJwtException e) {
-			log.error("Unsupported token. token={}", token);
+			log.error("JwtTokenUtils#parse: Unsupported token. token={}", token);
 		} catch (SignatureException e) {
-			log.error("Wrong key. token={}", token);
+			log.error("JwtTokenUtils#parse: Wrong key. token={}", token);
 		} catch (IllegalArgumentException e) {
-			log.error("The jwt is null. token={}", token);
+			log.error("JwtTokenUtils#parse: The jwt is null. token={}", token);
 		} catch (MalformedJwtException e) {
-			log.error("Token Construction error. token={}", token);
+			log.error("JwtTokenUtils#parse: Token Construction error. token={}", token);
 		} catch (Exception e) {
-			log.error("Parsing token claim error. token={}", token);
+			log.error("JwtTokenUtils#parse: Parsing token claim error. token={}", token);
 		}
 		return null;
 	}

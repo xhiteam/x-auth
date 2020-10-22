@@ -24,6 +24,7 @@ public interface TokenRepository {
 
     /**
      * 构建新的Token
+     *
      * @return 新的Token
      */
     Token newToken();

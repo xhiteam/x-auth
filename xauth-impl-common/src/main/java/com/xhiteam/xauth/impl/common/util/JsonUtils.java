@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @description json工具类
  * @date 2020/10/01 18:59
  */
-public class JsonUtils {
+public final class JsonUtils {
 
 	/**
 	 * 基于静态内部类的单例模式，用来获取 {@link ObjectMapper}

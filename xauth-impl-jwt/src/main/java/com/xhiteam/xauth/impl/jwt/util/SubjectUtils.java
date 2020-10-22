@@ -11,7 +11,7 @@ import java.util.List;
  * @description 认证实体工具类
  * @date 2020/09/26 11:34
  */
-public class SubjectUtils {
+public final class SubjectUtils {
 	/**
 	 * 判断是否有权限
 	 *
