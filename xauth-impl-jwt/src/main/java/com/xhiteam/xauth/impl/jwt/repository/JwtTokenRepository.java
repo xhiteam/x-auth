@@ -2,7 +2,7 @@ package com.xhiteam.xauth.impl.jwt.repository;
 
 import com.xhiteam.xauth.core.model.Token;
 import com.xhiteam.xauth.core.repository.AbstractTokenRepository;
-import com.xhiteam.xauth.impl.jwt.util.TokenUtils;
+import com.xhiteam.xauth.impl.jwt.util.JwtTokenUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,17 +13,17 @@ import java.util.Map;
 
 /**
  * @author WanJingmiao
- * @description
+ * @description Token仓库的实现类
  * @date 2020/10/16 11:02
  */
-public class LocalTokenRepository extends AbstractTokenRepository {
-	private static Logger log = LogManager.getLogger(LocalTokenRepository.class);
+public class JwtTokenRepository extends AbstractTokenRepository {
+	private static Logger log = LogManager.getLogger(JwtTokenRepository.class);
 
 
 	@Override
 	public Token parseToken(String tokenStr) {
 		if (StringUtils.isNotBlank(tokenStr)) {
-			Token token = TokenUtils.parseToken(tokenStr);
+			Token token = JwtTokenUtils.parseToken(tokenStr);
 			token.setTokenStr(tokenStr);
 			return token;
 		}
@@ -32,12 +32,12 @@ public class LocalTokenRepository extends AbstractTokenRepository {
 
 	@Override
 	public Token newToken(String id, List<String> roles, List<String> permissions, Calendar expire, Map<String, String> extensions) {
-		return TokenUtils.buildToken(id, roles, permissions, expire, extensions);
+		return JwtTokenUtils.buildToken(id, roles, permissions, expire, extensions);
 	}
 
 	@Override
 	public Token newToken(Token token) {
-		return TokenUtils.buildToken(token.getId(), token.getRoles(), token.getPermissions(), token.getExtensions());
+		return JwtTokenUtils.buildToken(token.getId(), token.getRoles(), token.getPermissions(), token.getExtensions());
 	}
 
 	@Override

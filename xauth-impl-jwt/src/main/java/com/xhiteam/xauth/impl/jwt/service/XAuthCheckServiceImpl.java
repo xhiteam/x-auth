@@ -6,17 +6,15 @@ import com.xhiteam.xauth.core.annotation.RequiresRoles;
 import com.xhiteam.xauth.core.model.Token;
 import com.xhiteam.xauth.core.service.XAuthCheckService;
 import com.xhiteam.xauth.impl.jwt.util.SubjectUtils;
-import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 
 /**
  * @author WanJingmiao
- * @description
+ * @description XAuth业务方法实现类
  * @date 2020/10/17 22:44
  */
-@Service
-class XAuthCheckServiceImpl implements XAuthCheckService {
+public class XAuthCheckServiceImpl implements XAuthCheckService {
 
 	@Override
 	public boolean check(Method method, Token token) {
@@ -30,7 +28,7 @@ class XAuthCheckServiceImpl implements XAuthCheckService {
 	public boolean checkIgnore(Method method) {
 		Ignore annotation = method.getAnnotation(Ignore.class);
 		if (annotation == null) {
-			//如果当前method上无注解，从类上拿
+			// 如果当前method上无注解，从类上拿
 			annotation = method.getDeclaringClass().getAnnotation(Ignore.class);
 		}
 		return annotation != null;
@@ -40,7 +38,7 @@ class XAuthCheckServiceImpl implements XAuthCheckService {
 	public boolean checkPermission(Method method, Token token) {
 		RequiresPermissions annotaion = method.getAnnotation(RequiresPermissions.class);
 		if (annotaion == null) {
-			//如果当前method上无注解，从类上拿
+			// 如果当前method上无注解，从类上拿
 			annotaion = method.getDeclaringClass().getAnnotation(RequiresPermissions.class);
 		}
 		if (annotaion == null) {

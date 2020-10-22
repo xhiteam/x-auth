@@ -19,8 +19,8 @@ import java.util.*;
  * @description token工具类
  * @date 2020/09/26 14:24
  */
-public class TokenUtils {
-	private static Logger log = LogManager.getLogger(TokenUtils.class);
+public class JwtTokenUtils {
+	private static Logger log = LogManager.getLogger(JwtTokenUtils.class);
 
 	/**
 	 * 构建token

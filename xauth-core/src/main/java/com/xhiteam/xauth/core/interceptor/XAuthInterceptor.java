@@ -52,7 +52,7 @@ public class XAuthInterceptor extends HandlerInterceptorAdapter {
             method = ((HandlerMethod) handler).getMethod();
         }
 
-        //将Token字符串解析为Token对象
+        // 将Token字符串解析为Token对象
         Token token = getToken(request);
 
         // 判断是否忽略权限注解或用户是否具有相应权限
