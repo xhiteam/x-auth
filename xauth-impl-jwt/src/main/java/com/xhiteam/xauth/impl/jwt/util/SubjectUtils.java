@@ -12,6 +12,11 @@ import java.util.List;
  * @date 2020/09/26 11:34
  */
 public final class SubjectUtils {
+
+	private SubjectUtils() {
+		throw new UnsupportedOperationException("[SubjectUtils] Construction is not supported");
+	}
+
 	/**
 	 * 判断是否有权限
 	 *

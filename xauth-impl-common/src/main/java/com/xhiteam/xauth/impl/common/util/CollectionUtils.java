@@ -10,6 +10,10 @@ import java.util.Objects;
  */
 public final class CollectionUtils {
 
+	private CollectionUtils() {
+		throw new UnsupportedOperationException("[CollectionUtils] Construction is not supported");
+	}
+
 	/**
 	 * 集合判空
 	 *

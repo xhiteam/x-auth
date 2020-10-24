@@ -19,7 +19,6 @@ import java.util.Map;
 public class JwtTokenRepository extends AbstractTokenRepository {
 	private static Logger log = LogManager.getLogger(JwtTokenRepository.class);
 
-
 	@Override
 	public Token parseToken(String tokenStr) {
 		if (!StringUtils.isEmpty(tokenStr)) {

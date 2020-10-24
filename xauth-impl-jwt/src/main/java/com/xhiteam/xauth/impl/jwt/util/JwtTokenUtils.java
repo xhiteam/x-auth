@@ -25,6 +25,11 @@ import java.util.*;
  * @date 2020/09/26 14:24
  */
 public final class JwtTokenUtils {
+
+	private JwtTokenUtils() {
+		throw new UnsupportedOperationException("[JwtTokenUtils] Construction is not supported");
+	}
+
 	private static Logger log = LogManager.getLogger(JwtTokenUtils.class);
 
 	/**

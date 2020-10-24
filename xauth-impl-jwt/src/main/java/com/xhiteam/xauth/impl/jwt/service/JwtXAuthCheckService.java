@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * @description XAuth业务方法实现类
  * @date 2020/10/17 22:44
  */
-public class XAuthCheckServiceImpl implements XAuthCheckService {
+public class JwtXAuthCheckService implements XAuthCheckService {
 
 	@Override
 	public boolean check(Method method, Token token) {

@@ -9,6 +9,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public final class JsonUtils {
 
+	private JsonUtils() {
+		throw new UnsupportedOperationException("[JsonUtils] Construction is not supported");
+	}
+
 	/**
 	 * 基于静态内部类的单例模式，用来获取 {@link ObjectMapper}
 	 */
