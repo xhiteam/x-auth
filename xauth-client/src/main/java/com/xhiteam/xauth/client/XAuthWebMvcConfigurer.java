@@ -5,7 +5,6 @@ import com.xhiteam.xauth.core.repository.TokenRepository;
 import com.xhiteam.xauth.core.service.XAuthCheckService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author lambo.chen.2306@gmail.com
  * @date 2020/10/24 22:12
  **/
-@EnableConfigurationProperties(XAuthProperties.class)
 public class XAuthWebMvcConfigurer implements WebMvcConfigurer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(XAuthWebMvcConfigurer.class);

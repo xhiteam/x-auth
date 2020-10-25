@@ -4,6 +4,7 @@ import com.xhiteam.xauth.core.repository.TokenRepository;
 import com.xhiteam.xauth.core.service.XAuthCheckService;
 import com.xhiteam.xauth.impl.jwt.repository.JwtTokenRepository;
 import com.xhiteam.xauth.impl.jwt.service.JwtXAuthCheckService;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @since version 0.1.0
  **/
 @Configuration
+@EnableConfigurationProperties(XAuthProperties.class)
 public class XAuthConfiguration {
 
     /**
