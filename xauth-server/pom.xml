@@ -4,12 +4,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.xhiteam.xauth</groupId>
-        <artifactId>xauth</artifactId>
+        <artifactId>xauth-pom</artifactId>
         <version>0.1.0</version>
+        <relativePath>../xauth-pom/pom.xml</relativePath>
     </parent>
 
     <artifactId>xauth-server</artifactId>
 
+    <properties>
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <maven.install.skip>true</maven.install.skip>
+    </properties>
+
     <packaging>pom</packaging>
+
+    <modules>
+        <module>xauth-server-jwt</module>
+    </modules>
 
 </project>

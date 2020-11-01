@@ -6,6 +6,7 @@
         <groupId>com.xhiteam.xauth</groupId>
         <artifactId>xauth-impl</artifactId>
         <version>0.1.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>xauth-impl-common</artifactId>

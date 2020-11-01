@@ -9,49 +9,20 @@
 
     <packaging>pom</packaging>
 
-    <modules>
-        <module>xauth-core</module>
-        <module>xauth-client</module>
-        <module>xauth-impl</module>
-        <module>xauth-server</module>
-    </modules>
-
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
-        <jjwt.version>0.10.7</jjwt.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-impl</artifactId>
-                <version>${jjwt.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-jackson</artifactId>
-                <version>${jjwt.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-api</artifactId>
-                <version>${jjwt.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <modules>
+        <module>xauth-core</module>
+        <module>xauth-client</module>
+        <module>xauth-impl</module>
+        <module>xauth-server</module>
+        <module>xauth-pom</module>
+    </modules>
 
     <organization>
         <name>Xhiteam</name>
@@ -132,7 +103,7 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
+                    <version>3.8.1</version>
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
@@ -142,5 +113,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
 </project>
