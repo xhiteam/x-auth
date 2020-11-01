@@ -12,8 +12,8 @@
     <modules>
         <module>xauth-core</module>
         <module>xauth-client</module>
-        <module>xauth-impl-common</module>
-        <module>xauth-impl-jwt</module>
+        <module>xauth-impl</module>
+        <module>xauth-server</module>
     </modules>
 
     <properties>
