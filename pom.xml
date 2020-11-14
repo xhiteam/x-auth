@@ -22,6 +22,7 @@
         <module>xauth-impl</module>
         <module>xauth-server</module>
         <module>xauth-pom</module>
+        <module>xauth-examples</module>
     </modules>
 
     <organization>
