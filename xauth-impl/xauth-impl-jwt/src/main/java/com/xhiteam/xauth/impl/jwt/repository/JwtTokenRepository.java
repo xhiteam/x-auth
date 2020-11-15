@@ -42,9 +42,7 @@ public class JwtTokenRepository extends AbstractTokenRepository {
 
 	@Override
 	public Token refreshToken(Token token) {
-		if (token == null) {
-			return null;
-		} else if(token.getExpire() == null) {
+		if(token == null || token.getExpire() == null) {
 			LOGGER.error("JwtTokenRepository#refreshToken: illegal param. token={}", token);
 			return null;
 		} else if (token.getExpire().getTimeInMillis() < System.currentTimeMillis()) {
