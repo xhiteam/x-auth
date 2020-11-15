@@ -18,9 +18,23 @@
 
    可以将用户的角色、权限信息导入并生成相应的JWT-Token
 
-   ```java
-   token = tokenRepository.newToken(String.valueOf(user.getId()));
-   ```
+   - 只设置用户的id（实体的唯一标识）
+   
+     ```java
+     token = tokenRepository.newToken(String.valueOf(user.getId()));
+     ```
+   
+   - 设置用户的id、角色、权限
+   
+     ```java
+     ArrayList<String> permissions = new ArrayList<>();
+     permissions.add("user:getAll");
+     ArrayList<String> roles = new ArrayList<>();
+     roles.add("admin");
+     token = tokenRepository.newToken(String.valueOf(user.getId()), roles, permissions, null);
+     ```
+   
+   除了这些基本的设置，还可以设置token超时时间、需要token携带的额外信息等，这些都在`tokenRepository`中进行了重载。
    
 3. 使用相关注解对接口进行权限校验
 
