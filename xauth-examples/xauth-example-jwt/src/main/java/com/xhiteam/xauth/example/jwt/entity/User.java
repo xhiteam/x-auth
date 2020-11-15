@@ -1,4 +1,4 @@
-package com.xhiteam.xauth.example.entity;
+package com.xhiteam.xauth.example.jwt.entity;
 
 /**
  * @author WanJingmiao

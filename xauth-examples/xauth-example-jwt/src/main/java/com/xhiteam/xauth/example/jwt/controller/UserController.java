@@ -1,9 +1,9 @@
-package com.xhiteam.xauth.example.controller;
+package com.xhiteam.xauth.example.jwt.controller;
 
 import com.xhiteam.xauth.core.annotation.Ignore;
 import com.xhiteam.xauth.core.model.Token;
 import com.xhiteam.xauth.core.repository.TokenRepository;
-import com.xhiteam.xauth.example.entity.User;
+import com.xhiteam.xauth.example.jwt.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
