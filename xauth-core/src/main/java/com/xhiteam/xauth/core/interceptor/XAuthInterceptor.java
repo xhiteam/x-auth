@@ -55,20 +55,20 @@ public class XAuthInterceptor extends HandlerInterceptorAdapter {
         Token token = getToken(request);
 
         // 判断是否忽略权限注解或用户是否具有相应权限
-        if (!service.check(method,token)) {
+        if (!service.check(method, token)) {
             throw new UnauthorizedException();
         }
 
-        // 刷新token并回传
-        if(token != null) {
-            refreshToken(request, response);
-        }
+        // 刷新 token 并回传
+        refreshToken(token, response);
 
         return super.preHandle(request, response, handler);
     }
 
-    private void refreshToken(HttpServletRequest request, HttpServletResponse response) {
-        Token token = getToken(request);
+    private void refreshToken(Token token, HttpServletResponse response) {
+        if (null == token) {
+            return;
+        }
         Token refreshToken = repository.refreshToken(token);
         if (refreshToken != null) {
             response.setHeader(HttpHeaders.AUTHORIZATION, refreshToken.getTokenStr());
