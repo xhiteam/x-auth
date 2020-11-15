@@ -60,7 +60,9 @@ public class XAuthInterceptor extends HandlerInterceptorAdapter {
         }
 
         // 刷新token并回传
-        refreshToken(request, response);
+        if(token != null) {
+            refreshToken(request, response);
+        }
 
         return super.preHandle(request, response, handler);
     }
