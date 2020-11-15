@@ -13,7 +13,7 @@ import java.util.Map;
 public interface Token {
 
     /**
-     * 默认超时时间 1800s
+     * 默认超时时间 3600
      */
     int DEFAULT_EXPIRE_S = 3600;
 
