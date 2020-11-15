@@ -24,7 +24,9 @@ public class JwtTokenRepository extends AbstractTokenRepository {
 	public Token parseToken(String tokenStr) {
 		if (!StringUtils.isEmpty(tokenStr)) {
 			Token token = JwtTokenUtils.parseToken(tokenStr);
-			token.setTokenStr(tokenStr);
+			if (token != null) {
+				token.setTokenStr(tokenStr);
+			}
 			return token;
 		}
 		return null;

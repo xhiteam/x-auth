@@ -53,7 +53,7 @@ public final class JwtTokenUtils {
 	public static Token buildToken(String subject, List<String> roles, List<String> permissions) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
-		cal.add(Calendar.MILLISECOND, Token.DEFAULT_EXPIRE_S);
+		cal.add(Calendar.SECOND, Token.DEFAULT_EXPIRE_S);
 		return buildToken(subject, roles, permissions, cal);
 	}
 
@@ -70,7 +70,7 @@ public final class JwtTokenUtils {
 								   Map<String, String> extensions) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
-		cal.add(Calendar.MILLISECOND, Token.DEFAULT_EXPIRE_S);
+		cal.add(Calendar.SECOND, Token.DEFAULT_EXPIRE_S);
 		return buildToken(subject, roles, permissions, cal, extensions);
 	}
 

@@ -39,7 +39,7 @@ public abstract class AbstractTokenRepository implements TokenRepository {
     public Token newToken(String id, List<String> roles, List<String> permissions, Map<String, String> extensions) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
-        cal.add(Calendar.MILLISECOND, Token.DEFAULT_EXPIRE_S);
+        cal.add(Calendar.SECOND, Token.DEFAULT_EXPIRE_S);
         return newToken(id, roles, permissions, cal, extensions);
     }
 }
