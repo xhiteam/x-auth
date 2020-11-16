@@ -19,6 +19,11 @@ public class XAuthProperties {
      */
     private String[] excludePath = new String[]{};
 
+    /**
+     * 私钥，至少需要64B的大小
+     */
+    private String privateKey = "qwertyuiop;'jhgfd.,/;l/;lsxcvbn1@#Q$YIFIS#%^&*>.cv%%#$dfg234567890#$%^&*(rtyujk#$%^&*";
+
     public String[] getPath() {
         return path;
     }
@@ -33,5 +38,13 @@ public class XAuthProperties {
 
     public void setExcludePath(String[] excludePath) {
         this.excludePath = excludePath;
+    }
+
+    public String getPrivateKey() {
+        return privateKey;
+    }
+
+    public void setPrivateKey(String privateKey) {
+        this.privateKey = privateKey;
     }
 }

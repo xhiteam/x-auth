@@ -16,6 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.PostConstruct;
 import java.security.Key;
 import java.util.*;
 
@@ -31,6 +32,12 @@ public final class JwtTokenUtils {
 	}
 
 	private static Logger log = LogManager.getLogger(JwtTokenUtils.class);
+
+	private static String PRIVATE_KEY;
+
+	public static void setPrivateKey(String privateKey) {
+		PRIVATE_KEY = privateKey;
+	}
 
 	/**
 	 * 构建token
@@ -236,6 +243,6 @@ public final class JwtTokenUtils {
 	 * @return 密钥
 	 */
 	private static Key generateKey() {
-		return Keys.hmacShaKeyFor(TokenConstant.PRIVATE_KEY.getBytes());
+		return Keys.hmacShaKeyFor(PRIVATE_KEY.getBytes());
 	}
 }
