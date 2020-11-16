@@ -32,6 +32,12 @@ public final class JwtTokenUtils {
 
 	private static Logger log = LogManager.getLogger(JwtTokenUtils.class);
 
+	private static String PRIVATE_KEY;
+
+	public static void setPrivateKey(String privateKey) {
+		PRIVATE_KEY = privateKey;
+	}
+
 	/**
 	 * 构建token
 	 *
@@ -236,6 +242,6 @@ public final class JwtTokenUtils {
 	 * @return 密钥
 	 */
 	private static Key generateKey() {
-		return Keys.hmacShaKeyFor(TokenConstant.PRIVATE_KEY.getBytes());
+		return Keys.hmacShaKeyFor(PRIVATE_KEY.getBytes());
 	}
 }
