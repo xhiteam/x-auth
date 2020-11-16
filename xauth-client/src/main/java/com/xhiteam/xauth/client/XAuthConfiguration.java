@@ -4,6 +4,7 @@ import com.xhiteam.xauth.core.repository.TokenRepository;
 import com.xhiteam.xauth.core.service.XAuthCheckService;
 import com.xhiteam.xauth.impl.jwt.repository.JwtTokenRepository;
 import com.xhiteam.xauth.impl.jwt.service.JwtXAuthCheckService;
+import com.xhiteam.xauth.impl.jwt.util.JwtTokenUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,7 +24,8 @@ public class XAuthConfiguration {
     @Bean
     // 此版本只有 JWT implement，不需要进行条件注入
 //    @Conditional(JwtXAuthCondition.class)
-    public TokenRepository tokenRepository() {
+    public TokenRepository tokenRepository(XAuthProperties xAuthProperties) {
+        JwtTokenUtils.setPrivateKey(xAuthProperties.getPrivateKey());
         return new JwtTokenRepository();
     }
 
