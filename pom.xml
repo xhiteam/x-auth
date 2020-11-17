@@ -7,6 +7,10 @@
     <artifactId>xauth</artifactId>
     <version>0.1.0</version>
 
+    <name>x-auth</name>
+    <description>A lightweight back-end security framework</description>
+    <url>https://github.com/xhiteam/x-auth</url>
+
     <packaging>pom</packaging>
 
     <properties>
