@@ -17,7 +17,7 @@ public interface TokenRepository {
     /**
      * 解析 Token Str
      *
-     * @param tokenStr
+     * @param tokenStr token字符串
      * @return {@link Token}
      */
     Token parseToken(String tokenStr);
@@ -43,15 +43,15 @@ public interface TokenRepository {
     /**
      * 拷贝构造
      *
-     * @param token
-     * @return
+     * @param token token
+     * @return 拷贝完成的新token
      */
     Token newToken(Token token);
 
     /**
      * 刷新 token 过期时间
-     * @param token
-     * @return
+     * @param token token
+     * @return 完成刷新的token
      */
     Token refreshToken(Token token);
 }

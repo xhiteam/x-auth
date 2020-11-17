@@ -26,10 +26,10 @@ public interface Token {
     Token setExpire(Calendar expire);
 
     /**
-     * 获取过期时间，默认 {@link #DEFAULT_EXPIRE_S}
+     * 过期时间，默认 {@link #DEFAULT_EXPIRE_S}
      *
-     * @param ttl
-     * @return
+     * @param ttl 过期时间
+     * @return token
      */
     Token setTtl(int ttl);
 
@@ -38,8 +38,8 @@ public interface Token {
     /**
      * 唯一标识，userId，clientId 等
      *
-     * @param id
-     * @return
+     * @param id 唯一标识
+     * @return token
      */
     Token setId(String id);
 
@@ -48,7 +48,7 @@ public interface Token {
     /**
      * 角色列表
      *
-     * @return
+     * @return 用户角色列表
      */
     List<String> getRoles();
 
@@ -57,7 +57,7 @@ public interface Token {
     /**
      * 权限列表
      *
-     * @return
+     * @return 用户权限列表
      */
     List<String> getPermissions();
 
@@ -66,7 +66,7 @@ public interface Token {
     /**
      * 获取扩展数据 Map
      *
-     * @return
+     * @return 扩展数据列表
      */
     Map<String, String> getExtensions();
 
@@ -75,17 +75,17 @@ public interface Token {
     /**
      * 添加扩展数据
      *
-     * @param key
-     * @param value
-     * @return
+     * @param key   扩展数据的key
+     * @param value 扩展数据的value
+     * @return token
      */
     Token putExtension(String key, String value);
 
     /**
      * 根据 key 获取扩展数据
      *
-     * @param key
-     * @return
+     * @param key 扩展信息的key
+     * @return 扩展信息的value
      */
     String getExtension(String key);
 }

@@ -15,31 +15,31 @@ public interface XAuthCheckService {
     /**
      * 校验所有 {@link #checkIgnore(Method)}、{@link #checkPermission(Method, Token)}、{@link #checkRole(Method, Token)}
      *
-     * @return
+     * @return 校验结果
      */
     boolean check(Method method, Token token);
 
     /**
      * 校验是否为 {@link com.xhiteam.xauth.core.annotation.Ignore} 注释方法
      *
-     * @param method
-     * @return
+     * @param method 被校验的接口方法
+     * @return 接口是否被忽略
      */
     boolean checkIgnore(Method method);
 
     /**
      * 校验是否有权限
      *
-     * @param method
-     * @return
+     * @param method 被校验的接口方法
+     * @return 是否有访问接口的权限
      */
     boolean checkPermission(Method method, Token token);
 
     /**
      * 校验是否为允许通行的角色
      *
-     * @param method
-     * @return
+     * @param method 被娇艳的接口方法
+     * @return 是否有访问接口的角色
      */
     boolean checkRole(Method method, Token token);
 }
