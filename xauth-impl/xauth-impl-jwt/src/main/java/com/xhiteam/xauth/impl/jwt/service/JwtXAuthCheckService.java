@@ -20,8 +20,6 @@ public class JwtXAuthCheckService implements XAuthCheckService {
 	public boolean check(Method method, Token token) {
 		if (checkIgnore(method)) {
 			return true;
-		} else if (token == null) {
-			return false;
 		}
 		return checkPermission(method, token) && checkRole(method, token);
 	}
@@ -38,6 +36,9 @@ public class JwtXAuthCheckService implements XAuthCheckService {
 
 	@Override
 	public boolean checkPermission(Method method, Token token) {
+		if (token == null) {
+			return false;
+		}
 		RequiresPermissions annotaion = method.getAnnotation(RequiresPermissions.class);
 		if (annotaion == null) {
 			// 如果当前method上无注解，从类上拿
@@ -51,6 +52,9 @@ public class JwtXAuthCheckService implements XAuthCheckService {
 
 	@Override
 	public boolean checkRole(Method method, Token token) {
+		if (token == null) {
+			return false;
+		}
 		RequiresRoles annotation = method.getAnnotation(RequiresRoles.class);
 		if (annotation == null) {
 			annotation = method.getDeclaringClass().getAnnotation(RequiresRoles.class);
