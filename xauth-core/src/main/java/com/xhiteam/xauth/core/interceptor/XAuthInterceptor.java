@@ -51,6 +51,11 @@ public class XAuthInterceptor extends HandlerInterceptorAdapter {
             method = ((HandlerMethod) handler).getMethod();
         }
 
+        // 对请求的接口方法进行判空
+        if (method == null) {
+            return super.preHandle(request, response, handler);
+        }
+
         // 将Token字符串解析为Token对象
         Token token = getToken(request);
 
