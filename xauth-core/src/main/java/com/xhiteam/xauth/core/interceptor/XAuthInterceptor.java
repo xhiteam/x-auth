@@ -4,6 +4,8 @@ import com.xhiteam.xauth.core.exception.UnauthorizedException;
 import com.xhiteam.xauth.core.model.Token;
 import com.xhiteam.xauth.core.repository.TokenRepository;
 import com.xhiteam.xauth.core.service.XAuthCheckService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -22,6 +24,8 @@ import java.lang.reflect.Method;
  **/
 @Order(1)
 public class XAuthInterceptor extends HandlerInterceptorAdapter {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(XAuthInterceptor.class);
 
     final TokenRepository repository;
     final XAuthCheckService service;
@@ -53,6 +57,7 @@ public class XAuthInterceptor extends HandlerInterceptorAdapter {
 
         // 对请求的接口方法进行判空
         if (method == null) {
+            LOGGER.warn("XAuthInterceptor#preHandle: Interface method is null. url={}", request.getRequestURL());
             return super.preHandle(request, response, handler);
         }
 

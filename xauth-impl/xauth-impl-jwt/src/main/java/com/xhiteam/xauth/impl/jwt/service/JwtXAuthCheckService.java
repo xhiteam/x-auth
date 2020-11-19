@@ -6,6 +6,8 @@ import com.xhiteam.xauth.core.annotation.RequiresRoles;
 import com.xhiteam.xauth.core.model.Token;
 import com.xhiteam.xauth.core.service.XAuthCheckService;
 import com.xhiteam.xauth.impl.jwt.util.SubjectUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 
@@ -15,6 +17,8 @@ import java.lang.reflect.Method;
  * @date 2020/10/17 22:44
  */
 public class JwtXAuthCheckService implements XAuthCheckService {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(JwtXAuthCheckService.class);
 
 	@Override
 	public boolean check(Method method, Token token) {
@@ -37,6 +41,7 @@ public class JwtXAuthCheckService implements XAuthCheckService {
 	@Override
 	public boolean checkPermission(Method method, Token token) {
 		if (token == null) {
+			LOGGER.error("JwtXAuthCheckService#checkPermission: Token is null.");
 			return false;
 		}
 		RequiresPermissions annotation = method.getAnnotation(RequiresPermissions.class);
@@ -53,6 +58,7 @@ public class JwtXAuthCheckService implements XAuthCheckService {
 	@Override
 	public boolean checkRole(Method method, Token token) {
 		if (token == null) {
+			LOGGER.error("JwtXAuthCheckService#checkRole: Token is null.");
 			return false;
 		}
 		RequiresRoles annotation = method.getAnnotation(RequiresRoles.class);

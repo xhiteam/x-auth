@@ -12,8 +12,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 import java.security.Key;
@@ -30,7 +30,7 @@ public final class JwtTokenUtils {
 		throw new UnsupportedOperationException("[JwtTokenUtils] Construction is not supported");
 	}
 
-	private static Logger log = LogManager.getLogger(JwtTokenUtils.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtils.class);
 
 	private static String PRIVATE_KEY;
 
@@ -202,7 +202,7 @@ public final class JwtTokenUtils {
 			try {
 				tokenBean = JsonUtils.getInstance().convertValue(claims.get(TokenConstant.TOKEN), TokenImpl.class);
 			} catch (Exception e) {
-				log.error("JwtTokenUtils#parseToken: token={}", token);
+				LOGGER.error("JwtTokenUtils#parseToken: token={}", token);
 			}
 		}
 		return tokenBean;
@@ -221,17 +221,17 @@ public final class JwtTokenUtils {
 		try {
 			return Jwts.parser().setSigningKey(generateKey()).parseClaimsJws(token).getBody();
 		} catch (ExpiredJwtException e) {
-			log.error("JwtTokenUtils#parse: Token has expired. token={}", token);
+			LOGGER.error("JwtTokenUtils#parse: Token has expired. token={}", token);
 		} catch (UnsupportedJwtException e) {
-			log.error("JwtTokenUtils#parse: Unsupported token. token={}", token);
+			LOGGER.error("JwtTokenUtils#parse: Unsupported token. token={}", token);
 		} catch (SignatureException e) {
-			log.error("JwtTokenUtils#parse: Wrong key. token={}", token);
+			LOGGER.error("JwtTokenUtils#parse: Wrong key. token={}", token);
 		} catch (IllegalArgumentException e) {
-			log.error("JwtTokenUtils#parse: The jwt is null. token={}", token);
+			LOGGER.error("JwtTokenUtils#parse: The jwt is null. token={}", token);
 		} catch (MalformedJwtException e) {
-			log.error("JwtTokenUtils#parse: Token Construction error. token={}", token);
+			LOGGER.error("JwtTokenUtils#parse: Token Construction error. token={}", token);
 		} catch (Exception e) {
-			log.error("JwtTokenUtils#parse: Parsing token claim error. token={}", token);
+			LOGGER.error("JwtTokenUtils#parse: Parsing token claim error. token={}", token);
 		}
 		return null;
 	}
