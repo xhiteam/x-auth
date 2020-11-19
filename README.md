@@ -52,7 +52,7 @@
 
 # 2. Change Log
 
-[Change Log & Version Manage & Plan](./doc/change-log.md)
+[Change Log & Version Manage](./doc/change-log.md)
 
 ## V0.1.0
 
