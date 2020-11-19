@@ -30,7 +30,7 @@ public final class CollectionUtils {
 	 * @param collection 集合类
 	 * @return 集合是否不为空
 	 */
-	public static boolean notNullOrEmpty(final Collection<?> collection) {
+	public static boolean hasElements(final Collection<?> collection) {
 		return !(Objects.isNull(collection) || collection.isEmpty());
 	}
 
@@ -52,7 +52,7 @@ public final class CollectionUtils {
 	 * @param <T>   类型
 	 * @return 数组是否为空
 	 */
-	public static <T> boolean notNullOrEmpty(final T[] array) {
+	public static <T> boolean hasElements(final T[] array) {
 		return !(Objects.isNull(array) || array.length <= 0);
 	}
 }
