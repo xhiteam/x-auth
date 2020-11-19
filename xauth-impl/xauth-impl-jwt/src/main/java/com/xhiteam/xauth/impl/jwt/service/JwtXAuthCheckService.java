@@ -20,6 +20,8 @@ public class JwtXAuthCheckService implements XAuthCheckService {
 	public boolean check(Method method, Token token) {
 		if (checkIgnore(method)) {
 			return true;
+		} else if (token == null) {
+			return false;
 		}
 		return checkPermission(method, token) && checkRole(method, token);
 	}
