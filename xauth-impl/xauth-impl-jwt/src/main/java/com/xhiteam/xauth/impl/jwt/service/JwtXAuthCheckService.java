@@ -39,15 +39,15 @@ public class JwtXAuthCheckService implements XAuthCheckService {
 		if (token == null) {
 			return false;
 		}
-		RequiresPermissions annotaion = method.getAnnotation(RequiresPermissions.class);
-		if (annotaion == null) {
+		RequiresPermissions annotation = method.getAnnotation(RequiresPermissions.class);
+		if (annotation == null) {
 			// 如果当前method上无注解，从类上拿
-			annotaion = method.getDeclaringClass().getAnnotation(RequiresPermissions.class);
+			annotation = method.getDeclaringClass().getAnnotation(RequiresPermissions.class);
 		}
-		if (annotaion == null) {
+		if (annotation == null) {
 			return true;
 		}
-		return SubjectUtils.hasPermission(token, annotaion.value(), annotaion.logical());
+		return SubjectUtils.hasPermission(token, annotation.value(), annotation.logical());
 	}
 
 	@Override
