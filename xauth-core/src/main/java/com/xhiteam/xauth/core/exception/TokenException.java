@@ -7,4 +7,8 @@ package com.xhiteam.xauth.core.exception;
 public class TokenException extends XAuthException {
 
     private static final long serialVersionUID = 3112034048541417485L;
+
+    public TokenException(String message) {
+        super(message);
+    }
 }

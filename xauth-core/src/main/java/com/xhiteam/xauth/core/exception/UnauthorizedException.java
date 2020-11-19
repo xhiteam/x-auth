@@ -9,4 +9,8 @@ package com.xhiteam.xauth.core.exception;
 public class UnauthorizedException extends TokenException {
 
     private static final long serialVersionUID = -1934607963769607704L;
+
+    public UnauthorizedException() {
+        super("Unauthorized");
+    }
 }

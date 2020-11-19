@@ -9,4 +9,8 @@ package com.xhiteam.xauth.core.exception;
 public class NonTokenException extends TokenException {
 
     private static final long serialVersionUID = 596027793363269514L;
+
+    public NonTokenException() {
+        super("Token is not exists");
+    }
 }

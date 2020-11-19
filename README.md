@@ -10,7 +10,7 @@
    <dependency>
        <groupId>com.xhiteam.xauth</groupId>
        <artifactId>xauth-client</artifactId>
-       <version>0.1.0</version>
+       <version>0.1.1</version>
    </dependency>
    ```
    
@@ -52,11 +52,13 @@
 
 # 2. Change Log
 
-## V0.1
+[Change Log & Version Manage](./doc/change-log.md)
+
+## V0.1.0
 
 提供 x-auth 基础骨架，并采用 JWT 进行实现。
 
-## V1.0（doing）
+## V1.0.0（doing）
 
 采用 JWT 实现分布式权限校验组件。主要开发任务包括：
 

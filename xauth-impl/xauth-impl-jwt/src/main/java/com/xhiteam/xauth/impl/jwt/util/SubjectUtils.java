@@ -34,7 +34,7 @@ public final class SubjectUtils {
 		}
 		boolean result = false;
 		List<String> tokenPermissions = token.getPermissions();
-		if (!CollectionUtils.isNullOrEmpty(tokenPermissions)) {
+		if (CollectionUtils.hasElements(tokenPermissions)) {
 			for (String permission : permissions) {
 				result = tokenPermissions.contains(permission);
 				if (logical == (result ? Logical.OR : Logical.AND)) {
@@ -62,7 +62,7 @@ public final class SubjectUtils {
 		}
 		boolean result = false;
 		List<String> tokenRoles = token.getRoles();
-		if (!CollectionUtils.isNullOrEmpty(tokenRoles)) {
+		if (CollectionUtils.hasElements(tokenRoles)) {
 			for (String role : roles) {
 				result = tokenRoles.contains(role);
 				if (logical == (result ? Logical.OR : Logical.AND)) {

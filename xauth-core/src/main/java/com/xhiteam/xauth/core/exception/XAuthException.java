@@ -10,4 +10,7 @@ public class XAuthException extends RuntimeException {
 
     private static final long serialVersionUID = 65349475195020986L;
 
+    public XAuthException(String message) {
+        super(message);
+    }
 }

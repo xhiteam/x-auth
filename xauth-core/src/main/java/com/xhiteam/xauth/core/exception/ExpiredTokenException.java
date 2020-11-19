@@ -10,4 +10,7 @@ public class ExpiredTokenException extends TokenException {
 
     private static final long serialVersionUID = 5481691538460663596L;
 
+    public ExpiredTokenException() {
+        super("Token has expired");
+    }
 }

@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.xhiteam.xauth</groupId>
         <artifactId>xauth-pom</artifactId>
-        <version>0.1.0</version>
+        <version>0.1.1</version>
         <relativePath>../xauth-pom/pom.xml</relativePath>
     </parent>
 

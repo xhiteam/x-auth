@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class XauthServerJwtApplication {
+public class XAuthServerJwtApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(XauthServerJwtApplication.class, args);
+        SpringApplication.run(XAuthServerJwtApplication.class, args);
     }
 
 }
